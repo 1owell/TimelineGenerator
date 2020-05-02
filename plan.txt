@@ -1,0 +1,23 @@
+Initial Requirements:
+
+- Be able to log 'events' with starting and ending dates (could be days, months, or years). 
+- Converts data to csv format for download.
+- Clean UI that presents data in an attractive way, and allows elements to be clicked, manipulated, etc.
+- Color coordination
+- 'Zoom' in and out on the timeline
+- Initial page prompts user for name of timeline, a description, a start date and optional end date. 
+- Needs to store session data client side so work isn't lost if page is reloaded. 
+- Use SVG to generate timeline
+
+Components:
+
+- Events
+- Timeline?
+- Button
+- Input fields > text boxes
+-
+
+Dumb componets are like views
+Smart components are like controllers
+
+svg will be the basis of the timeline ui. I can create a line, events, etc with svg, easily change colors and js events. 
