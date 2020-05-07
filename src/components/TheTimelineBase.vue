@@ -1,18 +1,19 @@
 <template>
     <!-- SVG timeline here -->
-    <svg xmlns="http://www.w3.org/2000/svg">
+    <g>
         <defs>
             <marker id="timelineStart" viewBox="0 0 10 10" refX="1" refY="5" markerUnits="strokeWidth">
                 <circle></circle>
             </marker>
-            <pattern id="ticks">
-                <path d="M 10 10 L 20 20"/>
+            <pattern id="ticks" width="50" height="1" patternUnits="userSpaceOnUse">
+                <path stroke="black" d="M 0 0 L 0 360" />
             </pattern>
         </defs>
         <g>
-            <path id="timeline_root" :d="drawTimeline" stroke="url(#ticks)" marker-start="url(#timelineStart)" />
+            <rect :width="width" :height="height" fill="url(#ticks)"/>
+            <path id="timeline_root" :d="drawTimeline" stroke="black" fill="url(#ticks)" marker-start="url(#timelineStart)" />
         </g>
-    </svg>
+    </g>
 </template>
 
 <script>
