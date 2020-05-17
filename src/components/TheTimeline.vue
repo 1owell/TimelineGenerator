@@ -4,16 +4,18 @@
 -->
 <template>
     <figure>
-        <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 360">
+        <svg  xmlns="http://www.w3.org/2000/svg" :width="width" :height="height">
+            <TimelineScale :height="height" :width="width"/>
             <TheTimelineBase/>
+            <TimelineEvent/>
         </svg>
     </figure>
-
 </template>
 
 <script>
 import TheTimelineBase from '@/components/TheTimelineBase'
-//import TimelineEvent from '@/components/TimelineEvent'
+import TimelineEvent from '@/components/TimelineEvent'
+import TimelineScale from '@/components/TimelineScale'
 
 export default {
     /**
@@ -26,7 +28,17 @@ export default {
     name: 'TheTimeline',
     components: {
         TheTimelineBase,
-        //TimelineEvent
+        TimelineEvent,
+        TimelineScale
+    },
+    // need to scale the view when the window size changes (keeping aspect ratio)
+    computed: {
+        width: function() {
+            return window.innerWidth;
+        },
+        height: function() {
+            return window.innerHeight * .89
+        }
     }
 }
 </script>
