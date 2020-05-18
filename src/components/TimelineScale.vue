@@ -1,7 +1,7 @@
 <template>
     <g>
-        <g v-for="n in 10" :key="n" :x="position(n)" width="150" :height="height" :fill="color(n)">
-            <TimelineScaleUnit :section-amount="12" :width="150" :height="height" :starting-pos="position(n)" :color="color(n)"/>
+        <g v-for="n in 11" :key="n" :x="position(n)" width="150" :height="height" :fill="color(n)">
+            <TimelineScaleUnit :section-amount="12" :width="150" :height="height" :starting-pos="position(n)" :color="color(n)" unit-value="2012"/>
         </g>
     </g>
 </template>

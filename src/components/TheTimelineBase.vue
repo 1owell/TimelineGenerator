@@ -24,13 +24,7 @@ export default {
     },
     computed: {
         drawTimeline: function () {
-            let command = "M";
-            command += ` 0 ${this.height - 50} L ${this.width} ${this.height - 50}`;
-            return command;
-        },
-        // needs to provide both the index and the spread measurement
-        drawTicks: function () {
-            return `M 0 0 L 0 ${this.height}`;
+            return `M 0 ${this.height} L ${this.width} ${this.height}`;
         }
     },
     methods: {

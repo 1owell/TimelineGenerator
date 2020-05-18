@@ -1,6 +1,8 @@
 <template>
     <g>
+        <!-- put the date value here above the units -->
         <rect v-for="n in sectionAmount" :key="n" :x="position(n)" :width="computedWidth" :height="height" :fill="color" class="sub-section"/>
+        <text :x="startingPos + width / 3" y="30" :textLength="width / 3" style="fill: black;">{{ unitValue }}</text>
     </g>
 </template>
 
@@ -12,7 +14,8 @@ export default {
         height: Number,
         startingPos: Number,
         sectionAmount: Number,
-        color: String
+        color: String,
+        unitValue: String
     },
     computed: {
         computedWidth: function() {
