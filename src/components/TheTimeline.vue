@@ -5,7 +5,7 @@
 <template>
     <figure>
         <svg  xmlns="http://www.w3.org/2000/svg" :width="width" :height="height">
-            <TimelineScale :height="height" :width="width" :subUnitCount="TIME_SUB_SCALE.created['week']"/>
+            <TimelineScale :height="height" :width="width" :sub-unit-count="TIME_SUB_SCALE[scaleUnit]"/>
             <TheTimelineBase/>
             <TimelineEvent/>
         </svg>
@@ -16,24 +16,20 @@
 import TheTimelineBase from '@/components/TheTimelineBase'
 import TimelineEvent from '@/components/TimelineEvent'
 import TimelineScale from '@/components/TimelineScale'
-
-const TIME_SUB_SCALE = {
-    created: function () {
-        return {
-                'week': 7,
-                'month': 30,
-                'year': 12,
-                'decade': 10
-            } 
-    }
-}
-            
+    
 export default {
     name: 'TheTimeline',
     props: {
         scaleUnit: String
     },
-    mixins: [TIME_SUB_SCALE],
+    created () {
+        this.TIME_SUB_SCALE = {
+            'week': 7,
+            'month': 30,
+            'year': 12,
+            'decade': 10
+        } 
+    },
     components: {
         TheTimelineBase,
         TimelineEvent,
