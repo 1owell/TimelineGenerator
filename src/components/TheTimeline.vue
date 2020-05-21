@@ -5,7 +5,7 @@
 <template>
     <figure>
         <svg  xmlns="http://www.w3.org/2000/svg" :width="width" :height="height">
-            <TimelineScale :height="height" :width="width"/>
+            <TimelineScale :height="height" :width="width" :subUnitCount="TIME_SUB_SCALE.created['week']"/>
             <TheTimelineBase/>
             <TimelineEvent/>
         </svg>
@@ -17,19 +17,33 @@ import TheTimelineBase from '@/components/TheTimelineBase'
 import TimelineEvent from '@/components/TimelineEvent'
 import TimelineScale from '@/components/TimelineScale'
 
+const TIME_SUB_SCALE = {
+    created: function () {
+        return {
+                'week': 7,
+                'month': 30,
+                'year': 12,
+                'decade': 10
+            } 
+    }
+}
+            
 export default {
-    /**
-     * zoom level
-     * 0.5 - days
-     * 1.0 - months
-     * 1.5 - years
-     */
-
     name: 'TheTimeline',
+    props: {
+        scaleUnit: String
+    },
+    mixins: [TIME_SUB_SCALE],
     components: {
         TheTimelineBase,
         TimelineEvent,
         TimelineScale
+    },
+    data() {
+        return {
+            
+            // where the data gets loaded and stored for this component instance
+        }
     },
     // need to scale the view when the window size changes (keeping aspect ratio)
     computed: {

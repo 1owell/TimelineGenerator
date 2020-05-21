@@ -1,5 +1,5 @@
 <template>
-    <TheTimeline/>
+    <TheTimeline :scale-unit="month"/>
 </template>
 
 <script>
