@@ -1,8 +1,9 @@
 <template>
     <g>
         <!-- change 11 to generate an amount suitable for the screen width -->
-        <g v-for="n in 11" :key="n" :x="position(n)" width="150" :height="height" :fill="color(n)">
-            <TimelineScaleUnit :sub-unit-count="subUnitCount" :width="150" :height="height" :starting-pos="position(n)" :color="color(n)" unit-value="2012"/>
+        <g v-for="n in 14" :key="n" :x="position(n)" width="150" :height="height" :fill="color(n)">
+            <TimelineScaleUnit :sub-unit-count="subUnitCount" :width="150" :height="height" :starting-pos="position(n)" 
+                                :color="color(n)" :unit-value="getScaleHeader(n)"/>
         </g>
     </g>
 </template>
@@ -18,7 +19,8 @@ import TimelineScaleUnit from '@/components/TimelineScaleUnit'
         props: {
             width: Number,
             height: Number,
-            subUnitCount: Number
+            subUnitCount: Number,
+            startDate: Number
         },
         // need to take the width and find a good subwidth to have ten divider rectangles
         methods: {
@@ -32,6 +34,10 @@ import TimelineScaleUnit from '@/components/TimelineScaleUnit'
             },
             position: function(n) {
                 return (n-1) * 150;
+            },
+            getScaleHeader: function(n) {
+                let date = this.startDate + n - 1;
+                return date.toString();
             }
         } 
     }

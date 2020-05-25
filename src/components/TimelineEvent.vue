@@ -21,6 +21,7 @@ export default {
         startDate: Number,
         endDate: Number,
         color: String,
+        scale: Number
     }
 }
 </script>

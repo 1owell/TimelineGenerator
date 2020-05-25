@@ -5,9 +5,9 @@
 <template>
     <figure>
         <svg  xmlns="http://www.w3.org/2000/svg" :width="width" :height="height">
-            <TimelineScale :height="height" :width="width" :sub-unit-count="TIME_SUB_SCALE[scaleUnit]"/>
+            <TimelineScale :height="height" :width="width" :sub-unit-count="TIME_SUB_SCALE[scaleUnit]" :start-date="startYear"/>
             <TheTimelineBase/>
-            <TimelineEvent/>
+            <TimelineEvent scale=""/> <!-- need to have the width of a unit be computed in the timeline component (consider another wrapper component that will be part of the template) so that event size can be the same. -->
         </svg>
     </figure>
 </template>
@@ -20,7 +20,8 @@ import TimelineScale from '@/components/TimelineScale'
 export default {
     name: 'TheTimeline',
     props: {
-        scaleUnit: String
+        scaleUnit: String,
+        startYear: Number
     },
     created () {
         this.TIME_SUB_SCALE = {

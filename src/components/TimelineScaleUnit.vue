@@ -19,12 +19,12 @@ export default {
     },
     computed: {
         computedWidth: function() {
-            return this.width / this.sectionAmount;
+            return this.width / this.subUnitCount;
         }
     },
     methods: {
         position: function(n) {
-            return this.startingPos + (n - 1) * (this.width / this.sectionAmount);
+            return this.startingPos + (n - 1) * (this.width / this.subUnitCount);
         }
     }
 }
