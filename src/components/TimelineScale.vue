@@ -1,9 +1,10 @@
+<!-- This is the component for the entire timeline scale, for all dates (every column) -->
 <template>
     <g>
         <!-- change 11 to generate an amount suitable for the screen width -->
         <g v-for="n in 14" :key="n" :x="position(n)" width="150" :height="height" :fill="color(n)">
             <TimelineScaleUnit :sub-unit-count="subUnitCount" :width="150" :height="height" :starting-pos="position(n)" 
-                                :color="color(n)" :unit-value="getScaleHeader(n)"/>
+                               :color="color(n)" :unit-value="getScaleHeader(n)"/>
         </g>
     </g>
 </template>

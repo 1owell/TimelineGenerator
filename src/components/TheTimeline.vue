@@ -7,7 +7,7 @@
         <svg  xmlns="http://www.w3.org/2000/svg" :width="width" :height="height">
             <TimelineScale :height="height" :width="width" :sub-unit-count="TIME_SUB_SCALE[scaleUnit]" :start-date="startYear"/>
             <TheTimelineBase/>
-            <TimelineEvent scale=""/> <!-- need to have the width of a unit be computed in the timeline component (consider another wrapper component that will be part of the template) so that event size can be the same. -->
+            <TimelineEvent :scale="150 / TIME_SUB_SCALE[scaleUnit]" :start-x="4" :end-x="200" :y="-360" /> <!-- need to have the width of a unit be computed in the timeline component (consider another wrapper component that will be part of the template) so that event size can be the same. -->
         </svg>
     </figure>
 </template>
