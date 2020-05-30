@@ -19,12 +19,12 @@ export default {
     data() {
         return {
             width: window.innerWidth,
-            height: 700
+            height: 600
         }
     },
     computed: {
         drawTimeline: function () {
-            return `M 0 ${this.height} L ${this.width} ${this.height}`;
+            return `M 15 ${this.height} L ${this.width} ${this.height}`;
         }
     },
     methods: {

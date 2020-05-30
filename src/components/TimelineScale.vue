@@ -27,10 +27,10 @@ import TimelineScaleUnit from '@/components/TimelineScaleUnit'
         methods: {
             color: function(n) {
                 if (n % 2 == 0) {
-                    return '#F6F6F6';
+                    return '#FFFFFF';
                 }
                 else {
-                    return '#FFFFFF';
+                    return '#F6F6F6';
                 }
             },
             position: function(n) {

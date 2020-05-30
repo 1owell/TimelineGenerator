@@ -5,9 +5,12 @@
 <template>
     <figure>
         <svg  xmlns="http://www.w3.org/2000/svg" :width="width" :height="height">
-            <TimelineScale :height="height" :width="width" :sub-unit-count="TIME_SUB_SCALE[scaleUnit]" :start-date="startYear"/>
+            <TimelineScale :height="height" :width="width" :sub-unit-count="TIME_SUB_SCALE[scaleUnit]" :start-date="1999"/>
             <TheTimelineBase/>
-            <TimelineEvent :scale="150 / TIME_SUB_SCALE[scaleUnit]" :start-x="150" :end-x="762.5" :y="200" />
+            <TimelineEvent :scale="150 / TIME_SUB_SCALE[scaleUnit]" 
+                           :start-x="dateToCoordinates(this.startDate, '2002-07-01', 150, this.scaleUnit)"
+                           :end-x="dateToCoordinates(this.startDate, '2004-01-20', 150, this.scaleUnit)" 
+                           :y="200" />
         </svg>
     </figure>
 </template>
@@ -16,27 +19,23 @@
 import TheTimelineBase from '@/components/TheTimelineBase'
 import TimelineEvent from '@/components/TimelineEvent'
 import TimelineScale from '@/components/TimelineScale'
-    
+import { dateCoordinatesMixin } from '../mixins/dateCoordinatesMixin'
+
 export default {
     name: 'TheTimeline',
     props: {
         scaleUnit: String,
-        startYear: Number
+        startDate: String
     },
-    created () {
-        this.TIME_SUB_SCALE = {
-            'week': 7,
-            'month': 30,
-            'year': 12,
-            'decade': 10
-        } 
-    },
+    mixins: [
+        dateCoordinatesMixin
+    ],
     components: {
         TheTimelineBase,
         TimelineEvent,
         TimelineScale
     },
-    data() {
+    data() { // data changing in here will be reactive to the component
         return {
             
             // where the data gets loaded and stored for this component instance
