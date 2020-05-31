@@ -13,10 +13,13 @@ export const dateCoordinatesMixin = {
         moment: function () { 
             return moment() 
         },
+        getMomentFromString(dateString) {
+            return moment(dateString, 'YYYY-MM-DD');
+        },
         // converts a date to an x coordinate to map events to the timeline scale
         dateToCoordinates: function (startDate, eventDate, scale, scale_unit) {
-            let dateObj     = moment(eventDate, "YYYY-MM-DD");
             let startMoment = moment(startDate, "YYYY-MM-DD");
+            let dateObj     = moment(eventDate, "YYYY-MM-DD");
             let count       = this.TIME_SUB_SCALE[scale_unit];
             switch(scale_unit) {
                 case 'week': {

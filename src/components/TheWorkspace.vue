@@ -1,5 +1,5 @@
 <template>
-    <TheTimeline scale-unit="decade" start-date="1999-01-1"/>
+    <TheTimeline scale-unit="year" start-date="1999-01-01" :scale="130"/>
 </template>
 
 <script>

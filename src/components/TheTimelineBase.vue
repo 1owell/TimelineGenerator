@@ -6,17 +6,21 @@
 </template>
 
 <script>
+import { dateCoordinatesMixin } from '../mixins/dateCoordinatesMixin'
 
 export default {
     name: 'TheTimelineBase',
     props: {
-        id: Number,
-        name: String,
-        zoomLevel: Number,
-        startDate: Number,
-        endDate: Number
+        scale: Number,
+        scaleUnit: String,
+        startDate: String
     },
+    mixins: [
+        dateCoordinatesMixin
+    ],
     data() {
+        // eventually will read index db --
+        // start date, end date
         return {
             width: window.innerWidth,
             height: 600
@@ -24,7 +28,8 @@ export default {
     },
     computed: {
         drawTimeline: function () {
-            return `M 15 ${this.height} L ${this.width} ${this.height}`;
+            let x = this.dateToCoordinates(this.startDate, '1999-05-26', this.scale, this.scaleUnit);
+            return `M ${x} ${this.height} L ${this.width} ${this.height}`;
         }
     },
     methods: {
@@ -33,6 +38,9 @@ export default {
         },
         spreadAmount: function (idx) {
             return 100 * idx;
+        },
+        getXPos: function () {
+            return ;
         }
     }
 }
