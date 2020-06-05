@@ -13,9 +13,13 @@
 </template>
 
 <script>
+import DetailsPane from '@/components/DetailsPane'
 export default {
     // transform="translate(160.5 832.5)"
     name: 'TimelineEvent',
+    components: {
+        DetailsPane
+    },
     props: {
         name: String,
         description: String,
