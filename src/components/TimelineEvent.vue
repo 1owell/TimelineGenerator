@@ -1,5 +1,8 @@
 <template>
     <g :transform="vertical">
+        <foreignObject>
+            <DetailsPane name-header="Name" sub-header="Sub Header" body-text="Body text"/>
+        </foreignObject>
         <line id="Line_42" data-name="Line 42" :x1="startX + 1" :x2="endX" fill="none" stroke="#ff7272" stroke-width="5"/>
         <g id="Ellipse_5" data-name="Ellipse 5" :transform="startPos" fill="#fff" stroke="#707070">
             <circle :cx="scale/2" cy="0" :r="scale/2" stroke="none"/>

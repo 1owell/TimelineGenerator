@@ -1,8 +1,8 @@
 <template>
-    <div>
-        <h3>{{ header }}</h3>
+    <div xmlns="http://www.w3.org/1999/xhtml">
+        <h3>{{ nameHeader }}</h3>
         <h5>{{ subHeader }}</h5>
-        <p>{{ body }}<p>
+        <p>{{ bodyText }}</p>
     </div>
 </template>
 
@@ -10,9 +10,13 @@
 export default {
     name: 'DetailsPane',
     props: {
-        header: String,
+        nameHeader: String,
         subHeader: String,
-        body: String
+        bodyText: String
     }
 }
 </script>
+
+<style scoped>
+
+</style>
