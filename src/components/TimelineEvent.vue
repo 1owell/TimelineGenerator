@@ -1,14 +1,15 @@
 <template>
-    <g :transform="vertical">
-        <foreignObject>
-            <DetailsPane name-header="Name" sub-header="Sub Header" body-text="Body text"/>
-        </foreignObject>
-        <line id="Line_42" data-name="Line 42" :x1="startX + 1" :x2="endX" fill="none" stroke="#ff7272" stroke-width="5"/>
-        <g id="Ellipse_5" data-name="Ellipse 5" :transform="startPos" fill="#fff" stroke="#707070">
+    <g :transform="vertical" @mouseover="hover = true" @mouseout="hover = false">
+        <DetailsPane v-show="this.hover" :name-header="header" :sub-header="subHeader" :body-text="body" />
+        
+        <line :x1="startX" :x2="endX" stroke="#ff7272" stroke-width="5"/>
+
+        <g :transform="startPos" fill="#fff" stroke="#707070">
             <circle :cx="scale/2" cy="0" :r="scale/2" stroke="none"/>
             <circle :cx="scale/2" cy="0" :r="scale/2" fill="none"/>
         </g>
-        <g id="Ellipse_6" data-name="Ellipse 6" :transform="endPos" fill="#fff" stroke="#707070">
+
+        <g :transform="endPos" fill="#fff" stroke="#707070">
             <circle :cx="scale/2" cy="0" :r="scale/2" stroke="none"/>
             <circle :cx="scale/2" cy="0" :r="scale/2" fill="none"/>
         </g>
@@ -35,14 +36,16 @@ export default {
         endX: Number
     },
     computed: {
-        vertical: function () {
-            return `translate(0 ${this.y})`;
-        },
-        startPos: function () {
-            return `translate(${this.startX} 0)`;
-        },
-        endPos:   function () {
-            return `translate(${this.endX} 0)`;
+        vertical() { return `translate(0 ${this.y})`;      },
+        startPos() { return `translate(${this.startX} 0)`; },
+        endPos()   { return `translate(${this.endX} 0)`;   }
+    },
+    data: function () {
+        return {
+            header: 'Header',
+            subHeader: 'Sub header',
+            body: 'This is body text.',
+            hover: false
         }
     }
 }
