@@ -1,6 +1,6 @@
 <template>
     <g :transform="vertical" @mouseover="hover = true" @mouseout="hover = false">
-        <DetailsPane v-show="this.hover" :name-header="header" :sub-header="subHeader" :body-text="body" />
+        <DetailsPane v-show="this.hover" :name-header="header" :sub-header="subHeader" :body-text="body" :x="(endX - startX) / 2 + startX - 150" :y="y - 150" />
         
         <line :x1="startX" :x2="endX" stroke="#ff7272" stroke-width="5"/>
 

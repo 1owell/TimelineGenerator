@@ -1,5 +1,5 @@
 <template>
-    <foreignObject x="20" y="20" width="160" height="160">
+    <foreignObject :x="x" :y="y" width="300" height="160">
         <div xmlns="http://www.w3.org/1999/xhtml">
             <h3>{{ nameHeader }}</h3>
             <h5>{{ subHeader }}</h5>
@@ -14,13 +14,23 @@ export default {
     props: {
         nameHeader: String,
         subHeader: String,
-        bodyText: String
+        bodyText: String,
+        x: Number,
+        y: Number
     }
 }
 </script>
 
 <style scoped>
+    foreignObject {
+        border-radius: 20px;
+        background-color: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
     div {
-        border: 1px solid black;
+        padding-left: 1em;
+        text-align: left;
+
     }
 </style>

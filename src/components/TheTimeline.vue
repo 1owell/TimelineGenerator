@@ -17,15 +17,16 @@
 
 <script>
 import TheTimelineBase from '@/components/TheTimelineBase'
-import TimelineEvent from '@/components/TimelineEvent'
-import TimelineScale from '@/components/TimelineScale'
+import TimelineEvent   from '@/components/TimelineEvent'
+import TimelineScale   from '@/components/TimelineScale'
 import { dateCoordinatesMixin } from '../mixins/dateCoordinatesMixin'
 
 export default {
     name: 'TheTimeline',
     props: {
-        scaleUnit: String,
+        scaleUnit: Number,
         startDate: String,
+        endDate: String,
         scale: Number
     },
     mixins: [
@@ -43,10 +44,10 @@ export default {
     },
     // need to scale the view when the window size changes (keeping aspect ratio)
     computed: {
-        width: function() {
+        width: function () {
             return window.innerWidth;
         },
-        height: function() {
+        height: function () {
             return window.innerHeight * .89
         }
     }
@@ -54,7 +55,6 @@ export default {
 </script>
 
 <style scoped>
-    
     figure {
         margin: 0;
     }

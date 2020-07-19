@@ -12,7 +12,7 @@ export default {
     name: 'TheTimelineBase',
     props: {
         scale: Number,
-        scaleUnit: String,
+        scaleUnit: Number,
         startDate: String
     },
     mixins: [

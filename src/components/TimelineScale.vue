@@ -2,7 +2,7 @@
 <template>
     <g>
         <!-- change 11 to generate an amount suitable for the screen width -->
-        <g v-for="n in 14" :key="n" :x="position(n)" :width="scale" :height="height" :fill="color(n)">
+        <g v-for="n in getAmountOfUnits()" :key="n" :x="position(n)" :width="scale" :height="height" :fill="color(n)">
             <TimelineScaleUnit :sub-unit-count="TIME_SUB_SCALE[scaleUnit]" 
                                :width="scale" 
                                :height="height" 
@@ -26,7 +26,8 @@ import { dateCoordinatesMixin } from '../mixins/dateCoordinatesMixin'
             width: Number,
             height: Number,
             startDate: String,
-            scaleUnit: String,
+            endDate: String,
+            scaleUnit: Number,
             scale: Number
         },
         mixins: [
@@ -34,15 +35,36 @@ import { dateCoordinatesMixin } from '../mixins/dateCoordinatesMixin'
         ],
         methods: {
             color: function(n) {
-                if (n % 2 == 0) {
-                    return '#FFFFFF';
-                }
-                else {
-                    return '#F6F6F6';
-                }
+                return (n % 2 == 0) ? '#FFFFFF' : '#F6F6F6';
             },
             position: function(n) {
                 return (n-1) * this.scale;
+            },
+            getAmountOfUnits: function() {
+                let start = this.getMomentFromString(this.startDate);
+                let end;
+                if (this.endDate == undefined) {
+                    end = this.getCurrentMoment();
+                }
+                else {
+                    end = this.getMomentFromString(this.endDate);
+                }
+                switch(this.scaleUnit) {
+                    case 0: {
+                        return end.diff(start, 'weeks');
+                    }  
+                    case 1: {
+                        return end.diff(start, 'months');
+                    }
+                    case 2: {
+                        return end.diff(start, 'years') + 1;
+                    }
+                    case 3: {
+                        return end.diff(start, 'years') + 1 / 10 >> 0;
+                    }
+                    default:
+                        return 5;
+                }
             },
             /**
              * Evaluates the start date prop and scale to generate the unit headers
@@ -50,16 +72,16 @@ import { dateCoordinatesMixin } from '../mixins/dateCoordinatesMixin'
             getScaleHeader: function(n) {
                 let date = this.getMomentFromString(this.startDate);
                 switch(this.scaleUnit) {
-                    case 'week': {
+                    case 0: {
                         return 'Week ' + date.week(date.week() + n - 1).week().toString();        
                     }  
-                    case 'month': {
+                    case 1: {
                         return date.month(n - 1).format('MMM');
                     }
-                    case 'year': {
+                    case 2: {
                         return date.year(date.year() + n - 1).year().toString();
                     }
-                    case 'decade': {
+                    case 3: {
                         return date.year(date.year() + n - 1).year().toString().substr(0,3) + '0s';
                     }
                     default:
