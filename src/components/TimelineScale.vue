@@ -1,7 +1,6 @@
 <!-- This is the component for the entire timeline scale, for all dates (every column) -->
 <template>
     <g>
-        <!-- change 11 to generate an amount suitable for the screen width -->
         <g v-for="n in getAmountOfUnits()" :key="n" :x="position(n)" :width="scale" :height="height" :fill="color(n)">
             <TimelineScaleUnit :sub-unit-count="TIME_SUB_SCALE[scaleUnit]" 
                                :width="scale" 
@@ -73,10 +72,10 @@ import { dateCoordinatesMixin } from '../mixins/dateCoordinatesMixin'
                 let date = this.getMomentFromString(this.startDate);
                 switch(this.scaleUnit) {
                     case 0: {
-                        return 'Week ' + date.week(date.week() + n - 1).week().toString();        
+                        return 'Week ' + n;        
                     }  
                     case 1: {
-                        return date.month(n - 1).format('MMM');
+                        return date.month(date.month() + n - 1).format('MMM');
                     }
                     case 2: {
                         return date.year(date.year() + n - 1).year().toString();

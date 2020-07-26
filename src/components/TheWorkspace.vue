@@ -3,7 +3,7 @@
         <ControlButton buttonText="-" @click.native="zoomOut"/>
         <ControlButton buttonText="+" @click.native="zoomIn"/>
 
-        <TheTimeline :scale-unit="scale" start-date="1999-01-01" :scale="130"/>
+        <TheTimeline :scale-unit="scale" start-date="1999-05-26" :scale="130"/>
     </div>
 </template>
 

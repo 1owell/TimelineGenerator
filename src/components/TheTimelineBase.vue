@@ -28,7 +28,7 @@ export default {
     },
     computed: {
         drawTimeline: function () {
-            let x = this.dateToCoordinates(this.startDate, '1999-05-26', this.scale, this.scaleUnit);
+            let x = this.dateToCoordinates('01-01-1999', this.startDate, this.scale, this.scaleUnit);
             return `M ${x} ${this.height} L ${this.width} ${this.height}`;
         }
     },
